@@ -1,15 +1,29 @@
-kind_peefumes=input("do you nedd peefumes for man or woman :\n")
-if kind_peefumes==man:
-    man=int(input("what  a number perfumes you need"))
-elif man==1:
-     print('one millon')   
-elif man== 4:
-    print('Blue chanel')
-elif kind_peefumes ==woman:
-    woman=int(input("what  a number perfumes you need") )
-elif  woman==2:
-     print('one millon') 
-elif woman==3:
-     print('chloe')    
+man_perfumes = {
+    1: "One Million",
+    4: "Blue Chanel"
+}
+
+woman_perfumes = {
+    2: "One Million",
+    3: "Chloe"
+}
+
+def get_perfume(kind, number):
+    if kind == "man":
+        return man_perfumes.get(number, "We don't have this number")
+    elif kind == "woman":
+        return woman_perfumes.get(number, "We don't have this number")
+    else:
+        return "Invalid input. Please choose 'man' or 'woman'"
+
+# تأكد من تشغيل هذا الجزء أولاً
+kind = input("Do you need perfumes for man or woman:\n").lower()
+
+if kind in ["man", "woman"]:
+    try:
+        number = int(input("How many perfumes do you need:\n"))
+        print(get_perfume(kind, number))
+    except ValueError:
+        print("Please enter a valid number.")
 else:
-    print('we dont have this number')    
+    print("Invalid input. Please choose 'man' or 'woman'")
